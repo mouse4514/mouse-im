@@ -2,3 +2,5 @@
 *.xml
 
 *.iml
+
+admin/node_modules/.bin/cake
