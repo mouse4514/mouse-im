@@ -1,0 +1,16 @@
+{
+  "name": "mouse-im-logs",
+  "version": "1.0.0",
+  "description": "日志系统",
+  "main": "http.js",
+  "dependencies": {
+    "memcached": "^2.2.1",
+    "mysql": "^2.10.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mouse",
+  "license": "ISC"
+}
