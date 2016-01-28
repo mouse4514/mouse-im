@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>nodejs 客户端</TITLE>
+
+<script src="./js/jquery-1.11.0.min.js"></script>
+<script src="./js/socket.io/socket.io.js"></script>
+<script src="./js/client.js"></script>
+<script>
+function mass(){
+	var param = {};
+	param['method'] = "user";
+	param['action'] = "getUser";
+	param['username'] = $("#username").val();
+	emit("public_msg",param,function(data){
+		
+	});
+
+}
+
+function callFrontDeskService(service_type) {
+	var param = {};
+	param['method'] = "socket";
+	param['action'] = "callFrontDesk";
+	param['service_type'] = service_type;
+	param['clients'] = 71;
+	emit("private_msg",param,function(data){
+		
+	});
+}
+
+function point(){
+	var param = {};
+	param['method'] = "socket";
+	param['action'] = "createMeeting";
+	param['inviter'] = 39;
+	param['meeting_type'] = 0;
+	param['clients'] = [85];
+	param['meeting_times'] = 60;
+	param['content'] = "邀请加入会议";
+	emit("private_msg",param,function(data){
+		console.log(data);
+	});
+
+}
+function inviteBack(id, status){
+	
+	var param = {};
+	param['method'] = "socket";
+	param['action'] = "updateMeetingInfo";
+	//param['inviter'] = 2;
+	param['is_accept'] = status;
+	param['id'] = id;
+	emit("private_msg",param,function(data){
+		console.log(data);
+	});
+
+}
+function reply(){
+	var param = {};
+	param['method'] = "user";
+	param['action'] = "getUser";
+	param['username'] = $("#username").val();
+	emit("reply_msg",param,function(data){
+		
+	});
+
+}
+</script>
+</HEAD>
+<body>
+<h3>Socket.io 客户端</h3>
+<div>客户端id：<font id="sid"></font></div>
+<div>连接状态：<font id="status"></font></div>
+<div>收到的消息：<font id="message"></font></div>
+<button id="connect" onClick='connect()'/>连接</button>
+<button id="disconnect" onClick='disconnect()'>断开连接</button>
+<button id="send" onClick='send("test")'/>发送消息</button>
+<p>
+<br>
+<br>
+<input type="text" name="username" id="username">
+<button id="emit" onClick='mass()'/>广播消息</button>
+<button id="emit" onClick='reply()'/>立即应答消息</button>
+<p>
+<p>
+<br>
+<br>
+<button id="emit" onClick='callFrontDeskService("订餐")'/>订餐</button>
+<button id="emit" onClick='callFrontDeskService("呼叫服务")'/>呼叫服务</button>
+<button id="emit" onClick='callFrontDeskService("打印")'/>打印</button>
+<p>
+<h3>客户端点对点消息</h3>
+<br>
+邀请会议室id:<input type="text" name="roomid" id="roomid" >
+<button id="emit" onClick='point()'/>发送</button>
+<br>
+<p>
+<div style="display:" id="private_msg">
+<li></li>
+</div>
+<br>
+<font id="callback" name="callback">返回数据显示</font>
+</body>
+</HTML>
