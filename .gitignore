@@ -2,3 +2,6 @@
 *.xml
 
 *.iml
+.idea/.name
+api/app/node_modules/
+logs/node_modules/
