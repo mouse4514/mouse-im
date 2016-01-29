@@ -15,4 +15,3 @@ global.PHP_HOST = '';
 global.PHP_PATH = '';
 global.PHP_PORT = '80';
 global.PHP_METHOD_GET = 'GET';
-global.PHP_METHOD_POST = 'POST';

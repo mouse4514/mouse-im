@@ -12,7 +12,7 @@ var server = http.createServer();
 var io = sio.listen(server);
 var usersWS = {};
 io.sockets.on('connection', function(socket){
-    console.log("from client :" + socket.id + " ip="+socket.handshake.address+" content.");
+    console.log("来自客户端 " + socket.id + " ip="+socket.handshake.address+" 连接.");
     var test = function() {
         for (var i in usersWS){
             // 同一个ip只有一个连接
@@ -39,7 +39,7 @@ io.sockets.on('connection', function(socket){
     //客户的断开连接
     socket.on('disconnect', function(){
         delete usersWS[socket.handshake.address];
-        console.log("client " + socket.id + " close.");
+        console.log("客户端 " + socket.id + " 断开连接.");
         refresh_online();
     });
     //获得客户端emit数据

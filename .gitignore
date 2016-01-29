@@ -1,8 +1,6 @@
-
 *.xml
-
-*.iml
 .idea/.name
 api/app/node_modules/
 logs/node_modules/
 bufmwcuw.2ly.txt
+admin/node_modules/.bin/cake
