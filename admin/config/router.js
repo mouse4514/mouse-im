@@ -1,4 +1,6 @@
-define(['angular', 'require', 'app','routeMap','modelMap','angularRoute'], function (angular, require, app, routeMap,modelMap) {
+define(['angular', 'require', 'app','routeMap','modelMap','angularRoute'],
+
+    function (angular, require, app, routeMap,modelMap) {
 
     app.config(['$routeProvider', '$controllerProvider','$provide',
         function($routeProvider, $controllerProvider,$provide) {

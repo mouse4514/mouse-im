@@ -5,7 +5,7 @@
         
         ], function (angular) {  
             'use strict';
-            return angular.module('webapp', ['ngRoute','ngCookies']);
+            return angular.module('webapp', ['ui.router','ngCookies']);
     }); 
 
 
